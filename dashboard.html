@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | GreenAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <a href="/" class="logo">🌱 GreenAI</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/report">Report</a>
+        <a href="/login">Login</a>
+    </div>
+</nav>
+
+
+<div class="container">
+    <h1>🌍 Sustainability Analysis</h1>
+    <input id="energy" type="number" placeholder="Energy (kWh)">
+    <input id="water" type="number" placeholder="Water (Liters)">
+    <input id="co2" type="number" placeholder="CO₂ (Tons)">
+    <input id="renewable" type="number" placeholder="Renewable (%)">
+    <input id="waste" type="number" placeholder="Waste Recycled (%)">
+    <button onclick="predict()">Analyze</button>
+    <h2 id="result"></h2>
+    <a href="/report" class="cta">View Report</a>
+</div>
+
+<!-- Correct JS reference using Flask -->
+<script src="{{ url_for('static', filename='server.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report | GreenAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="/" class="logo">🌱 GreenAI</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/report">Report</a>
+        <a href="/login">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>🌱 Sustainability Report</h1>
+
+    {% if analysis %}
+        <div class="report-box">
+            <h2>Overall Score: <span class="score">{{ analysis.score }}/100</span></h2>
+
+            <table class="report-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Energy Consumption</td>
+                    <td>{{ analysis.energy }} kWh</td>
+                </tr>
+                <tr>
+                    <td>Water Usage</td>
+                    <td>{{ analysis.water }} Liters</td>
+                </tr>
+                <tr>
+                    <td>CO₂ Emissions</td>
+                    <td>{{ analysis.co2 }} Tons</td>
+                </tr>
+                <tr>
+                    <td>Renewable Energy</td>
+                    <td>{{ analysis.renewable }} %</td>
+                </tr>
+                <tr>
+                    <td>Waste Recycled</td>
+                    <td>{{ analysis.waste }} %</td>
+                </tr>
+            </table>
+
+            <h3>Assessment</h3>
+            {% if analysis.score >= 75 %}
+                <p class="good">✅ Excellent sustainability performance</p>
+            {% elif analysis.score >= 50 %}
+                <p class="average">⚠️ Moderate sustainability — improvements recommended</p>
+            {% else %}
+                <p class="bad">❌ Poor sustainability — urgent action needed</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No analysis found.</p>
+        <p>Please go to the <a href="/dashboard">Dashboard</a> and run an analysis.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
